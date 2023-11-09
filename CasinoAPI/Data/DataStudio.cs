@@ -1,7 +1,7 @@
-﻿using CasinoAPI.Models;
-using Dapper;
+﻿using Dapper;
 using System.Data.SqlClient;
 using System.Data;
+using CasinoAPI.Models.Dto;
 
 namespace CasinoAPI.Data
 {
@@ -21,11 +21,11 @@ namespace CasinoAPI.Data
             }
         }
 
-        public async Task<List<User>> ShowUserById(int id)
+        public List<User> ShowUserById(int id)
         {
             using (var connection = new SqlConnection(cn.getConnection()))
             {
-                await connection.OpenAsync();
+                
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("id", id);
 
